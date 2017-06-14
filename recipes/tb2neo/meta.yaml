@@ -1,0 +1,50 @@
+{% set name = "tb2neo" %}
+{% set version = "0.0.7" %}
+{% set sha256 = "fee5a352cd57f7d3937183962bc020c6a8ac2b8953264bf736759799945c8d3c" %}
+
+package:
+  name: {{ name }}
+  version: {{ version }}
+
+source:
+  fn: {{ name }}-{{ version }}.tar.gz
+  url:  https://github.com/SANBI-SA/{{ name }}/archive/{{ version }}.tar.gz
+  sha256: {{ sha256 }}
+
+build:
+  entry_points:
+    - tb2neo = tb2neo.cli:cli
+  number: 0
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - py2neo
+    - bioservices
+    - click
+    - beautifulsoup4
+    - biopython
+    - bcbio-gff
+    - tqdm
+    - xmltodict
+    - combat_tb_model
+  run:
+    - python
+    - py2neo
+    - bioservices
+    - click
+    - beautifulsoup4
+    - biopython
+    - bcbio-gff
+    - tqdm
+    - xmltodict
+    - combat_tb_model
+test:
+  commands:
+    - tb2neo --help |grep Neo4j >/dev/null
+
+about:
+  home: https://github.com/sanbi-sa/tb2neo
+  license: Apache Software License
+  summary: 'Parses TB GFF file and other annotation to build a Neo4j Graph database.'
