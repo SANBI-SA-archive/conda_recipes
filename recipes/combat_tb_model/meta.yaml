@@ -1,0 +1,32 @@
+{% set name = "combat_tb_model" %}
+{% set version = "0.0.1" %}
+{% set sha256 = "eee89834109404b8a4b6f8422758dda5e7e6e2e1e5ee70e900ff046a2a60ac8e" %}
+
+package:
+  name: {{ name }}
+  version: {{ version }}
+
+source:
+  fn: {{ name }}-{{ version }}.tar.gz
+  url:  https://github.com/SANBI-SA/{{ name }}/archive/{{ version }}.tar.gz
+  sha256: {{ sha256 }}
+
+build:
+  number: 0
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - py2neo
+  run:
+    - python
+    - py2neo
+test:
+  imports:
+    - combat_tb_model.model.core
+    - combat_tb_model.model.vcfmodel
+
+about:
+  home: https://github.com/SANBI-SA/combat_tb_model
+  summary: 'COMBAT-TB Graph Model,a Chado-derived graph model for genome annotation.'
