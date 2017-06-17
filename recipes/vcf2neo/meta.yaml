@@ -1,0 +1,46 @@
+{% set name = "vcf2neo" %}
+{% set version = "0.0.6" %}
+{% set sha256 = "2f0eee31faa8c0f7e9cae28db0ab780663c1a908fb7cd9c49261cb35df87a225" %}
+
+package:
+  name: {{ name }}
+  version: {{ version }}
+
+source:
+  fn: {{ name }}-{{ version }}.tar.gz
+  url:  https://github.com/SANBI-SA/{{ name }}/archive/{{ version }}.tar.gz
+  sha256: {{ sha256 }}
+
+build:
+  entry_points:
+    - tb2neo = tb2neo.cli:cli
+  number: 0
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - py2neo
+    - bioservices
+    - click
+    - tqdm
+    - pyvcf
+    - combat_tb_model
+    - xmltodict
+  run:
+    - python
+    - py2neo
+    - bioservices
+    - click
+    - tqdm
+    - pyvcf
+    - combat_tb_model
+    - xmltodict
+test:
+  commands:
+    - vcf2neo --help |grep VCF >/dev/null
+
+about:
+  home: https://github.com/sanbi-sa/vcf2neo
+  license: Apache Software License
+  summary: 'A tool to import SnpEff produced vcf files to a Neo4j Graph database.'
