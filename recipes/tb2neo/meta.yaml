@@ -25,7 +25,7 @@ requirements:
     - click
     - beautifulsoup4
     - biopython
-    - bcbio-gff
+    - bcbiogff
     - tqdm
     - xmltodict
     - combat_tb_model
