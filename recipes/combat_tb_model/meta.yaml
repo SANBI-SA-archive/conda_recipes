@@ -1,6 +1,6 @@
 {% set name = "combat_tb_model" %}
-{% set version = "0.0.1" %}
-{% set sha256 = "eee89834109404b8a4b6f8422758dda5e7e6e2e1e5ee70e900ff046a2a60ac8e" %}
+{% set version = "0.0.2" %}
+{% set sha256 = "1156993d91cc5e3c7b34609d0b145b704b5459d4faebd87b01936d1669b815e7" %}
 
 package:
   name: {{ name }}
@@ -12,6 +12,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
+  script: python setup.py install --single-version-externally-managed --record=record.txt
   number: 0
 
 requirements:
