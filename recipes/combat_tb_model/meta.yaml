@@ -1,6 +1,6 @@
 {% set name = "combat_tb_model" %}
-{% set version = "0.0.2" %}
-{% set sha256 = "1156993d91cc5e3c7b34609d0b145b704b5459d4faebd87b01936d1669b815e7" %}
+{% set version = "0.0.3" %}
+{% set sha256 = "8d06e9d200af15f0c074c73b9e72a4652ea1f658e5a9538bd0400701a9153cc2" %}
 
 package:
   name: {{ name }}
@@ -27,6 +27,7 @@ test:
   imports:
     - combat_tb_model.model.core
     - combat_tb_model.model.vcfmodel
+    - combat_tb_model.model.fasttree
 
 about:
   home: https://github.com/SANBI-SA/combat_tb_model
