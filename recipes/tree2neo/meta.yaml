@@ -1,0 +1,47 @@
+{% set name = "tree2neo" %}
+{% set version = "0.0.3" %}
+{% set sha256 = "1ab785a82687102ae14b787a2a0ebce6f877b6a603ee42851bd1a6a2811cdab3" %}
+
+package:
+  name: {{ name }}
+  version: {{ version }}
+
+source:
+  fn: {{ name }}-{{ version }}.tar.gz
+  url:  https://github.com/SANBI-SA/{{ name }}/archive/{{ version }}.tar.gz
+  sha256: {{ sha256 }}
+
+build:
+  script: python setup.py install --single-version-externally-managed --record=record.txt
+  entry_points:
+    - tree2neo = tree2neo.cli:cli
+  number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - py2neo
+    - bioblend
+    - biopython
+    - bioservices
+    - click
+    - tqdm
+    - combat_tb_model
+  run:
+    - python
+    - py2neo
+    - bioblend
+    - biopython
+    - bioservices
+    - click
+    - tqdm
+    - combat_tb_model
+test:
+  commands:
+    - tree2neo --help |grep TREE >/dev/null
+
+about:
+  home: https://github.com/sanbi-sa/tree2neo
+  license: Apache Software License
+  summary: 'Parses FastTree Newick file and load it to the graph database.'
